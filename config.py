@@ -8,4 +8,4 @@ class Config(object):
 
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "6626958529:AAEPm42AevBDyBZQ5sM9i1zpElktUBwHGKM")
 
-    CHANNEL_USERNAME = os.environ.get("CHANNEL_USERNAME")
+    CHANNEL_USERNAME = os.environ.get("CHANNEL_USERNAME", "MenfessDisini")
