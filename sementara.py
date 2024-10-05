@@ -14,9 +14,15 @@ ON_SUCCESS_POST = """
 ✅ Pesan Kamu telah berhasil dikirim ke channel. Lihat di sini:
 """
 
-@bot.on_message(
-	(filters.text | filters.photo | filters.video | filters.audio | filters.voice) &
-	filters.private)
+START = """
+Halo, buat sementara untuk ngirim menfess ya, bot sedang melakukan update.
+"""
+
+@bot.on_message(filters.command("start") & filters.private)
+async def start(bot, message):
+	await message.reply(text=START)
+	
+@bot.on_message(filters.text | filters.photo | filters.video | filters.audio | filters.voice & filters.private)
 async def on_post_menfess(_, m: Message):
 	user = m.from_user
 	ch_usn = os.getenv("CHANNEL_USERNAME")
