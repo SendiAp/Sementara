@@ -41,3 +41,7 @@ async def on_post_menfess(_, m: Message):
 		disable_web_page_preview=True,
 		disable_notification=True
 	)
+
+print('sukses')
+
+bot.run()
