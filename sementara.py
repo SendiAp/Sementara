@@ -1,3 +1,18 @@
+import os
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from config import Config
+
+bot = Client(
+    "bot",
+    api_id=Config.API_ID,
+    api_hash=Config.API_HASH,
+    bot_token=Config.BOT_TOKEN
+)
+
+ON_SUCCESS_POST = """
+✅ Pesan Kamu telah berhasil dikirim ke channel. Lihat di sini:
+"""
 
 @bot.on_message(
 	(filters.text | filters.photo | filters.video | filters.audio | filters.voice) &
@@ -8,7 +23,7 @@ async def on_post_menfess(_, m: Message):
 
 	copied = await m.copy(ch_usn)
 	await m.reply(
-		text=ON_SUCCESS_POST.format(user_id=user.id),
+		text=ON_SUCCESS_POST,
 		reply_markup=InlineKeyboardMarkup(
 			[[InlineKeyboardButton(
 				"Lihat pesan 💬",
